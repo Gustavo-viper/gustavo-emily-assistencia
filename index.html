@@ -1,0 +1,2775 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#05070d">
+
+  <title>Gustavo & Emily | Assistência Técnica</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- =====================================================
+       TELA DE AUTENTICAÇÃO
+  ====================================================== -->
+
+  <div id="authScreen" class="auth-screen">
+
+    <div class="auth-card">
+
+      <div class="auth-logo">
+        <img src="logo.png" alt="Gustavo & Emily">
+      </div>
+
+      <h1>Gustavo & Emily</h1>
+
+      <p class="auth-subtitle">
+        Assistência Técnica
+      </p>
+
+
+      <!-- LOGIN ADMINISTRADOR -->
+
+      <div id="adminLoginBox" class="auth-box">
+
+        <h2>Área administrativa</h2>
+
+        <p>
+          Entre com sua conta de administrador.
+        </p>
+
+        <form id="adminLoginForm">
+
+          <div class="form-group">
+
+            <label for="adminEmail">
+              E-mail
+            </label>
+
+            <input
+              type="email"
+              id="adminEmail"
+              placeholder="Digite seu e-mail"
+              required
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="adminPassword">
+              Senha
+            </label>
+
+            <input
+              type="password"
+              id="adminPassword"
+              placeholder="Digite sua senha"
+              required
+            >
+
+          </div>
+
+
+          <button
+            type="submit"
+            class="primary-button"
+          >
+            Entrar como administrador
+          </button>
+
+        </form>
+
+
+        <button
+          type="button"
+          class="link-button"
+          id="showClientLoginButton"
+        >
+          Acessar área do cliente
+        </button>
+
+
+        <button
+          type="button"
+          class="link-button"
+          id="showClientRegisterButton"
+        >
+          Criar conta de cliente
+        </button>
+
+      </div>
+
+
+      <!-- LOGIN CLIENTE -->
+
+      <div
+        id="clientLoginBox"
+        class="auth-box"
+        hidden
+      >
+
+        <h2>Área do cliente</h2>
+
+        <p>
+          Acompanhe seus aparelhos e pedidos.
+        </p>
+
+
+        <form id="clientLoginForm">
+
+          <div class="form-group">
+
+            <label for="clientLoginEmail">
+              E-mail
+            </label>
+
+            <input
+              type="email"
+              id="clientLoginEmail"
+              placeholder="Digite seu e-mail"
+              required
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="clientLoginPassword">
+              Senha
+            </label>
+
+            <input
+              type="password"
+              id="clientLoginPassword"
+              placeholder="Digite sua senha"
+              required
+            >
+
+          </div>
+
+
+          <button
+            type="submit"
+            class="primary-button"
+          >
+            Entrar
+          </button>
+
+        </form>
+
+
+        <button
+          type="button"
+          class="link-button"
+          id="backToAdminLoginButton"
+        >
+          Voltar para login administrativo
+        </button>
+
+
+        <button
+          type="button"
+          class="link-button"
+          id="showClientRegisterButton2"
+        >
+          Criar nova conta
+        </button>
+
+      </div>
+
+
+      <!-- CADASTRO CLIENTE -->
+
+      <div
+        id="clientRegisterBox"
+        class="auth-box"
+        hidden
+      >
+
+        <h2>Criar conta</h2>
+
+        <p>
+          Cadastre-se para acompanhar seus serviços.
+        </p>
+
+
+        <form id="clientRegisterForm">
+
+          <div class="form-group">
+
+            <label for="clientName">
+              Nome completo
+            </label>
+
+            <input
+              type="text"
+              id="clientName"
+              placeholder="Seu nome completo"
+              required
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="clientPhone">
+              Telefone
+            </label>
+
+            <input
+              type="tel"
+              id="clientPhone"
+              placeholder="(00) 00000-0000"
+              required
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="clientRegisterEmail">
+              E-mail
+            </label>
+
+            <input
+              type="email"
+              id="clientRegisterEmail"
+              placeholder="Seu e-mail"
+              required
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="clientRegisterPassword">
+              Senha
+            </label>
+
+            <input
+              type="password"
+              id="clientRegisterPassword"
+              placeholder="Mínimo de 6 caracteres"
+              minlength="6"
+              required
+            >
+
+          </div>
+
+
+          <button
+            type="submit"
+            class="primary-button"
+          >
+            Criar minha conta
+          </button>
+
+        </form>
+
+
+        <button
+          type="button"
+          class="link-button"
+          id="backToClientLoginButton"
+        >
+          Já tenho uma conta
+        </button>
+
+      </div>
+
+
+      <div
+        id="authMessage"
+        class="message-box"
+      ></div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       SISTEMA ADMINISTRATIVO
+  ====================================================== -->
+
+  <div
+    id="adminApp"
+    class="app"
+    hidden
+  >
+
+    <!-- MENU LATERAL -->
+
+    <aside
+      class="sidebar"
+      id="sidebar"
+    >
+
+      <div class="brand">
+
+        <img
+          src="logo.png"
+          alt="Gustavo & Emily"
+        >
+
+        <div>
+
+          <h2>
+            Gustavo & Emily
+          </h2>
+
+          <span>
+            Assistência Técnica
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <nav class="menu">
+
+        <button
+          type="button"
+          class="menu-item active"
+          data-page="dashboard"
+        >
+          <span>⌂</span>
+          Dashboard
+        </button>
+
+
+        <button
+          type="button"
+          class="menu-item"
+          data-page="clientes"
+        >
+          <span>♙</span>
+          Clientes
+        </button>
+
+
+        <button
+          type="button"
+          class="menu-item"
+          data-page="ordens"
+        >
+          <span>▣</span>
+          Ordens de serviço
+        </button>
+
+
+        <button
+          type="button"
+          class="menu-item"
+          data-page="orcamentos"
+        >
+          <span>▤</span>
+          Orçamentos
+        </button>
+
+
+        <button
+          type="button"
+          class="menu-item"
+          data-page="orcamentos-salvos"
+        >
+          <span>▧</span>
+          Orçamentos salvos
+        </button>
+
+
+        <button
+          type="button"
+          class="menu-item"
+          data-page="estoque"
+        >
+          <span>▥</span>
+          Estoque
+        </button>
+
+
+        <button
+          type="button"
+          class="menu-item"
+          data-page="financeiro"
+        >
+          <span>R$</span>
+          Financeiro
+        </button>
+
+
+        <button
+          type="button"
+          class="menu-item"
+          data-page="configuracoes"
+        >
+          <span>⚙</span>
+          Configurações
+        </button>
+
+      </nav>
+
+
+      <div class="sidebar-footer">
+
+        <span class="status-dot"></span>
+
+        Sistema conectado
+
+      </div>
+
+    </aside>
+
+
+    <!-- CONTEÚDO ADMINISTRATIVO -->
+
+    <main class="main">
+
+      <header class="topbar">
+
+        <button
+          type="button"
+          class="mobile-menu"
+          id="mobileMenu"
+        >
+          ☰
+        </button>
+
+
+        <div>
+
+          <p class="welcome">
+            Bem-vindo ao seu painel
+          </p>
+
+          <h1 id="pageTitle">
+            Dashboard
+          </h1>
+
+        </div>
+
+
+        <div class="user-profile">
+
+          <div class="avatar">
+            G
+          </div>
+
+
+          <div class="user-info">
+
+            <strong id="adminDisplayName">
+              Administrador
+            </strong>
+
+            <span>
+              Administrador
+            </span>
+
+          </div>
+
+
+          <button
+            type="button"
+            class="logout-button"
+            id="adminLogoutButton"
+          >
+            Sair
+          </button>
+
+        </div>
+
+      </header>
+
+
+      <!-- DASHBOARD -->
+
+      <section
+        id="dashboard"
+        class="page active-page"
+      >
+
+        <div class="page-heading">
+
+          <div>
+
+            <h2>
+              Visão geral
+            </h2>
+
+            <p>
+              Acompanhe o funcionamento da sua assistência técnica.
+            </p>
+
+          </div>
+
+
+          <button
+            type="button"
+            class="primary-button"
+            id="newOrderBtn"
+          >
+            + Nova ordem
+          </button>
+
+        </div>
+
+
+        <div class="stats-grid">
+
+          <div class="stat-card">
+
+            <div class="stat-icon green">
+              ♙
+            </div>
+
+            <div>
+
+              <span>
+                Clientes
+              </span>
+
+              <strong id="totalClients">
+                0
+              </strong>
+
+            </div>
+
+          </div>
+
+
+          <div class="stat-card">
+
+            <div class="stat-icon blue">
+              ▣
+            </div>
+
+            <div>
+
+              <span>
+                Ordens abertas
+              </span>
+
+              <strong id="totalOrders">
+                0
+              </strong>
+
+            </div>
+
+          </div>
+
+
+          <div class="stat-card">
+
+            <div class="stat-icon yellow">
+              R$
+            </div>
+
+            <div>
+
+              <span>
+                A receber
+              </span>
+
+              <strong id="totalReceivable">
+                R$ 0,00
+              </strong>
+
+            </div>
+
+          </div>
+
+
+          <div class="stat-card">
+
+            <div class="stat-icon purple">
+              ▤
+            </div>
+
+            <div>
+
+              <span>
+                Itens no estoque
+              </span>
+
+              <strong id="totalStock">
+                0
+              </strong>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="content-grid">
+
+          <div class="panel">
+
+            <div class="panel-header">
+
+              <div>
+
+                <h3>
+                  Ordens recentes
+                </h3>
+
+                <p>
+                  Últimos serviços cadastrados
+                </p>
+
+              </div>
+
+
+              <button
+                type="button"
+                class="text-button"
+                data-go="ordens"
+              >
+                Ver todas
+              </button>
+
+            </div>
+
+
+            <div
+              id="recentOrders"
+              class="orders-list"
+            ></div>
+
+          </div>
+
+
+          <div class="panel">
+
+            <div class="panel-header">
+
+              <div>
+
+                <h3>
+                  Acesso rápido
+                </h3>
+
+                <p>
+                  Principais funções do sistema
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <div class="quick-actions">
+
+              <button
+                type="button"
+                class="quick-button"
+                data-go="clientes"
+              >
+
+                <span>
+                  ♙
+                </span>
+
+                <div>
+
+                  <strong>
+                    Cadastrar cliente
+                  </strong>
+
+                  <small>
+                    Adicionar novo cliente
+                  </small>
+
+                </div>
+
+              </button>
+
+
+              <button
+                type="button"
+                class="quick-button"
+                data-go="ordens"
+              >
+
+                <span>
+                  ▣
+                </span>
+
+                <div>
+
+                  <strong>
+                    Nova ordem de serviço
+                  </strong>
+
+                  <small>
+                    Registrar aparelho
+                  </small>
+
+                </div>
+
+              </button>
+
+
+              <button
+                type="button"
+                class="quick-button"
+                data-go="estoque"
+              >
+
+                <span>
+                  ▤
+                </span>
+
+                <div>
+
+                  <strong>
+                    Gerenciar estoque
+                  </strong>
+
+                  <small>
+                    Controlar peças e produtos
+                  </small>
+
+                </div>
+
+              </button>
+
+
+              <button
+                type="button"
+                class="quick-button"
+                data-go="financeiro"
+              >
+
+                <span>
+                  R$
+                </span>
+
+                <div>
+
+                  <strong>
+                    Ver financeiro
+                  </strong>
+
+                  <small>
+                    Acompanhar pagamentos
+                  </small>
+
+                </div>
+
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- CLIENTES -->
+
+      <section
+        id="clientes"
+        class="page"
+      >
+
+        <div class="page-heading">
+
+          <div>
+
+            <h2>
+              Clientes
+            </h2>
+
+            <p>
+              Gerencie os clientes cadastrados.
+            </p>
+
+          </div>
+
+
+          <button
+            type="button"
+            class="primary-button"
+            id="addClientBtn"
+          >
+            + Novo cliente
+          </button>
+
+        </div>
+
+
+        <div class="panel">
+
+          <div class="panel-header">
+
+            <h3>
+              Lista de clientes
+            </h3>
+
+
+            <input
+              type="search"
+              id="clientSearch"
+              class="search-input"
+              placeholder="Buscar cliente..."
+            >
+
+          </div>
+
+
+          <div class="table-wrapper">
+
+            <table>
+
+              <thead>
+
+                <tr>
+                  <th>Nome</th>
+                  <th>Telefone</th>
+                  <th>E-mail</th>
+                  <th>Ações</th>
+                </tr>
+
+              </thead>
+
+
+              <tbody id="clientsTable"></tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ORDENS DE SERVIÇO -->
+
+      <section
+        id="ordens"
+        class="page"
+      >
+
+        <div class="page-heading">
+
+          <div>
+
+            <h2>
+              Ordens de serviço
+            </h2>
+
+            <p>
+              Acompanhe os reparos dos aparelhos.
+            </p>
+
+          </div>
+
+
+          <button
+            type="button"
+            class="primary-button"
+            id="addOrderBtn"
+          >
+            + Nova ordem
+          </button>
+
+        </div>
+
+
+        <div class="panel">
+
+          <div class="panel-header">
+
+            <h3>
+              Serviços cadastrados
+            </h3>
+
+
+            <select
+              id="orderFilter"
+              class="select-input"
+            >
+
+              <option value="todos">
+                Todos os status
+              </option>
+
+              <option value="aguardando">
+                Aguardando
+              </option>
+
+              <option value="andamento">
+                Em andamento
+              </option>
+
+              <option value="concluido">
+                Concluído
+              </option>
+
+              <option value="entregue">
+                Entregue
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="table-wrapper">
+
+            <table>
+
+              <thead>
+
+                <tr>
+                  <th>OS</th>
+                  <th>Cliente</th>
+                  <th>Aparelho</th>
+                  <th>Valor</th>
+                  <th>Status</th>
+                  <th>Ações</th>
+                </tr>
+
+              </thead>
+
+
+              <tbody id="ordersTable"></tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ORÇAMENTOS -->
+
+      <section
+        id="orcamentos"
+        class="page"
+      >
+
+        <div class="page-heading">
+
+          <div>
+
+            <h2>
+              Orçamentos automáticos
+            </h2>
+
+            <p>
+              Consulte os valores cadastrados na tabela de preços.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="panel">
+
+          <div class="panel-header">
+
+            <div>
+
+              <h3>
+                Novo orçamento
+              </h3>
+
+              <p>
+                O valor será calculado conforme a tabela de preços.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <form id="quoteForm">
+
+            <div class="form-group">
+
+              <label for="quoteDevice">
+                Modelo do aparelho
+              </label>
+
+
+              <select
+                id="quoteDevice"
+                class="form-input"
+                required
+              >
+
+                <option value="">
+                  Selecione o aparelho
+                </option>
+
+              </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="quoteService">
+                Serviço desejado
+              </label>
+
+
+              <select
+                id="quoteService"
+                class="form-input"
+                disabled
+                required
+              >
+
+                <option value="">
+                  Selecione o serviço
+                </option>
+
+              </select>
+
+            </div>
+
+
+            <div
+              id="quoteResult"
+              class="quote-result"
+              hidden
+            >
+
+              <h3>
+                Resumo do orçamento
+              </h3>
+
+
+              <div class="quote-line">
+
+                <span>
+                  Aparelho
+                </span>
+
+                <strong id="resultDevice">
+                  -
+                </strong>
+
+              </div>
+
+
+              <div class="quote-line">
+
+                <span>
+                  Serviço
+                </span>
+
+                <strong id="resultService">
+                  -
+                </strong>
+
+              </div>
+
+
+              <div class="quote-line total-line">
+
+                <span>
+                  Valor total
+                </span>
+
+                <strong id="resultTotal">
+                  R$ 0,00
+                </strong>
+
+              </div>
+
+
+              <div class="payment-box">
+
+                <div class="quote-line">
+
+                  <span>
+                    Sinal de 50%
+                  </span>
+
+                  <strong id="resultDeposit">
+                    R$ 0,00
+                  </strong>
+
+                </div>
+
+
+                <div class="quote-line">
+
+                  <span>
+                    Restante na entrega
+                  </span>
+
+                  <strong id="resultRemaining">
+                    R$ 0,00
+                  </strong>
+
+                </div>
+
+              </div>
+
+
+              <button
+                type="button"
+                id="saveQuoteButton"
+                class="primary-button"
+              >
+                Salvar orçamento
+              </button>
+
+            </div>
+
+
+            <div class="form-actions">
+
+              <button
+                type="submit"
+                class="primary-button"
+              >
+                Calcular orçamento
+              </button>
+
+            </div>
+
+          </form>
+
+        </div>
+
+      </section>
+
+
+      <!-- ORÇAMENTOS SALVOS -->
+
+      <section
+        id="orcamentos-salvos"
+        class="page"
+      >
+
+        <div class="page-heading">
+
+          <div>
+
+            <h2>
+              Orçamentos salvos
+            </h2>
+
+            <p>
+              Controle os orçamentos e os pagamentos dos sinais.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="panel">
+
+          <div class="table-wrapper">
+
+            <table>
+
+              <thead>
+
+                <tr>
+                  <th>Número</th>
+                  <th>Aparelho</th>
+                  <th>Serviço</th>
+                  <th>Total</th>
+                  <th>Sinal</th>
+                  <th>Status do sinal</th>
+                  <th>Restante</th>
+                  <th>Ações</th>
+                </tr>
+
+              </thead>
+
+
+              <tbody id="savedQuotesTable">
+
+                <tr>
+
+                  <td colspan="8">
+                    Nenhum orçamento salvo.
+                  </td>
+
+                </tr>
+
+              </tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ESTOQUE -->
+
+      <section
+        id="estoque"
+        class="page"
+      >
+
+        <div class="page-heading">
+
+          <div>
+
+            <h2>
+              Estoque
+            </h2>
+
+            <p>
+              Controle peças, componentes e produtos da loja.
+            </p>
+
+          </div>
+
+
+          <button
+            type="button"
+            class="primary-button"
+            id="addStockBtn"
+          >
+            + Nova peça
+          </button>
+
+        </div>
+
+
+        <div class="panel">
+
+          <div class="panel-header">
+
+            <h3>
+              Itens cadastrados
+            </h3>
+
+          </div>
+
+
+          <div class="table-wrapper">
+
+            <table>
+
+              <thead>
+
+                <tr>
+                  <th>Produto</th>
+                  <th>Categoria</th>
+                  <th>Quantidade</th>
+                  <th>Custo unitário</th>
+                  <th>Ações</th>
+                </tr>
+
+              </thead>
+
+
+              <tbody id="stockTable"></tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- FINANCEIRO -->
+
+      <section
+        id="financeiro"
+        class="page"
+      >
+
+        <div class="page-heading">
+
+          <div>
+
+            <h2>
+              Financeiro
+            </h2>
+
+            <p>
+              Acompanhe os valores da assistência técnica.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="stats-grid finance-stats">
+
+          <div class="stat-card">
+
+            <div class="stat-icon green">
+              R$
+            </div>
+
+            <div>
+
+              <span>
+                Total recebido
+              </span>
+
+              <strong id="totalReceived">
+                R$ 0,00
+              </strong>
+
+            </div>
+
+          </div>
+
+
+          <div class="stat-card">
+
+            <div class="stat-icon yellow">
+              R$
+            </div>
+
+            <div>
+
+              <span>
+                Saldo a receber
+              </span>
+
+              <strong id="financeReceivable">
+                R$ 0,00
+              </strong>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="panel">
+
+          <div class="panel-header">
+
+            <h3>
+              Resumo financeiro
+            </h3>
+
+          </div>
+
+
+          <div class="finance-summary">
+
+            <p>
+              Os valores são calculados com base nas ordens
+              e nos orçamentos cadastrados.
+            </p>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- CONFIGURAÇÕES -->
+
+      <section
+        id="configuracoes"
+        class="page"
+      >
+
+        <div class="page-heading">
+
+          <div>
+
+            <h2>
+              Configurações
+            </h2>
+
+            <p>
+              Informações básicas do sistema.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="panel settings-panel">
+
+          <h3>
+            Gustavo & Emily Assistência Técnica
+          </h3>
+
+
+          <p>
+            Sistema de gerenciamento de reparos de celulares,
+            computadores, tablets e notebooks.
+          </p>
+
+
+          <p>
+
+            <strong>
+              WhatsApp:
+            </strong>
+
+            (51) 98933-1736
+
+          </p>
+
+
+          <p>
+
+            <strong>
+              Chave PIX:
+            </strong>
+
+            04416436041
+
+          </p>
+
+
+          <p>
+
+            <strong>
+              Tipo da chave:
+            </strong>
+
+            CPF
+
+          </p>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+
+  <!-- =====================================================
+       ÁREA DO CLIENTE
+  ====================================================== -->
+
+  <div
+    id="clientApp"
+    class="client-app"
+    hidden
+  >
+
+
+    <!-- CABEÇALHO DO CLIENTE -->
+
+    <header class="client-header">
+
+      <div class="client-brand">
+
+        <div class="client-brand-symbol">
+          G&E
+        </div>
+
+        <div>
+
+          <h2>
+            Área do cliente
+          </h2>
+
+          <span>
+            Gustavo & Emily Assistência Técnica
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <div class="client-user-area">
+
+        <span id="clientWelcomeName">
+          Olá, cliente
+        </span>
+
+
+        <button
+          type="button"
+          class="cart-button"
+          id="cartButton"
+          data-open-cart
+        >
+          🛒
+
+          <span>
+            Carrinho
+          </span>
+
+          <strong
+            id="cartCount"
+            class="cart-count"
+            hidden
+          >
+            0
+          </strong>
+
+        </button>
+
+
+        <button
+          type="button"
+          class="logout-button"
+          id="clientLogoutButton"
+        >
+          Sair
+        </button>
+
+      </div>
+
+    </header>
+
+
+    <div class="client-layout">
+
+
+      <!-- MENU CLIENTE -->
+
+      <aside class="client-sidebar">
+
+        <nav class="client-menu">
+
+          <button
+            type="button"
+            class="client-menu-item active"
+            data-client-page="client-home"
+          >
+            🏠
+            Início
+          </button>
+
+
+          <button
+            type="button"
+            class="client-menu-item"
+            data-client-page="client-maintenance"
+          >
+            🔧
+            Meus aparelhos
+          </button>
+
+
+          <button
+            type="button"
+            class="client-menu-item"
+            data-client-page="client-quotes"
+          >
+            📄
+            Meus orçamentos
+          </button>
+
+
+          <button
+            type="button"
+            class="client-menu-item"
+            data-client-page="client-payments"
+          >
+            💳
+            Pagamentos
+          </button>
+
+
+          <button
+            type="button"
+            class="client-menu-item"
+            data-client-page="client-pix"
+          >
+            🔑
+            Pagamento via PIX
+          </button>
+
+
+          <button
+            type="button"
+            class="client-menu-item"
+            data-client-page="client-store"
+          >
+            🛒
+            Loja
+          </button>
+
+
+          <button
+            type="button"
+            class="client-menu-item"
+            data-client-page="client-contact"
+          >
+            💬
+            Fale conosco
+          </button>
+
+        </nav>
+
+      </aside>
+
+
+      <!-- CONTEÚDO DO CLIENTE -->
+
+      <main class="client-main">
+
+
+        <!-- INÍCIO -->
+
+        <section
+          data-client-page-content="client-home"
+          class="client-page active-client-page"
+        >
+
+          <div class="page-heading">
+
+            <div>
+
+              <span class="section-label">
+                PAINEL DO CLIENTE
+              </span>
+
+              <h2>
+                Olá, seja bem-vindo!
+              </h2>
+
+              <p>
+                Acompanhe seus aparelhos, orçamentos e pedidos.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="stats-grid">
+
+            <div class="stat-card">
+
+              <div class="stat-icon blue">
+                📱
+              </div>
+
+              <div>
+
+                <span>
+                  Meus aparelhos
+                </span>
+
+                <strong id="clientTotalDevices">
+                  0
+                </strong>
+
+              </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+              <div class="stat-icon yellow">
+                📄
+              </div>
+
+              <div>
+
+                <span>
+                  Orçamentos
+                </span>
+
+                <strong id="clientTotalQuotes">
+                  0
+                </strong>
+
+              </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+              <div class="stat-icon green">
+                💳
+              </div>
+
+              <div>
+
+                <span>
+                  Pagamentos pendentes
+                </span>
+
+                <strong id="clientPendingPayments">
+                  0
+                </strong>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="panel client-welcome-panel">
+
+            <span class="section-label">
+              GUSTAVO & EMILY
+            </span>
+
+            <h3>
+              Sua assistência técnica de confiança
+            </h3>
+
+            <p>
+              Consulte seus serviços, acompanhe seus aparelhos
+              e faça pedidos de acessórios pelo nosso sistema.
+            </p>
+
+            <button
+              type="button"
+              class="primary-button"
+              data-client-page-target="client-maintenance"
+              onclick="mostrarPaginaCliente('client-maintenance')"
+            >
+              Ver meus aparelhos
+            </button>
+
+          </div>
+
+        </section>
+
+
+        <!-- MEUS APARELHOS -->
+
+        <section
+          data-client-page-content="client-maintenance"
+          class="client-page"
+          hidden
+        >
+
+          <div class="page-heading">
+
+            <div>
+
+              <span class="section-label">
+                MEUS SERVIÇOS
+              </span>
+
+              <h2>
+                Meus aparelhos
+              </h2>
+
+              <p>
+                Acompanhe os aparelhos cadastrados e o andamento dos reparos.
+              </p>
+
+            </div>
+
+
+            <button
+              type="button"
+              id="addDeviceButton"
+              class="primary-button"
+            >
+              + Cadastrar aparelho
+            </button>
+
+          </div>
+
+
+          <!-- FORMULÁRIO DO APARELHO -->
+
+          <div
+            id="deviceFormContainer"
+            class="device-form-container"
+            hidden
+          >
+
+            <h3>
+              Cadastrar novo aparelho
+            </h3>
+
+
+            <form id="deviceForm">
+
+              <div class="device-fields">
+
+
+                <div class="form-group">
+
+                  <label for="deviceType">
+                    Tipo do aparelho
+                  </label>
+
+
+                  <select
+                    id="deviceType"
+                    required
+                  >
+
+                    <option value="">
+                      Selecione o tipo
+                    </option>
+
+                    <option value="Celular">
+                      Celular
+                    </option>
+
+                    <option value="Notebook">
+                      Notebook
+                    </option>
+
+                    <option value="Computador">
+                      Computador
+                    </option>
+
+                    <option value="Tablet">
+                      Tablet
+                    </option>
+
+                    <option value="Video Game">
+                      Video Game
+                    </option>
+
+                    <option value="Outro">
+                      Outro
+                    </option>
+
+                  </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                  <label for="deviceModelSearch">
+                    Modelo
+                  </label>
+
+
+                  <div class="device-model-wrapper">
+
+                    <input
+                      type="text"
+                      id="deviceModelSearch"
+                      placeholder="Digite o modelo"
+                      autocomplete="off"
+                      required
+                    >
+
+
+                    <div
+                      id="deviceSuggestions"
+                      class="device-model-suggestions"
+                      hidden
+                    ></div>
+
+                  </div>
+
+
+                  <input
+                    type="hidden"
+                    id="selectedDeviceModel"
+                  >
+
+
+                  <span class="device-model-hint">
+                    Digite o modelo do aparelho.
+                  </span>
+
+                </div>
+
+
+                <div class="form-group">
+
+                  <label for="deviceIdentifier">
+                    IMEI / Número de série
+                  </label>
+
+
+                  <input
+                    type="text"
+                    id="deviceIdentifier"
+                    placeholder="Opcional"
+                  >
+
+                </div>
+
+
+                <div class="form-group device-field-full">
+
+                  <label for="deviceProblem">
+                    Problema / defeito
+                  </label>
+
+
+                  <textarea
+                    id="deviceProblem"
+                    placeholder="Descreva o problema do aparelho"
+                    required
+                  ></textarea>
+
+                </div>
+
+              </div>
+
+
+              <div class="form-buttons">
+
+                <button
+                  type="submit"
+                  class="primary-button"
+                >
+                  Cadastrar aparelho
+                </button>
+
+
+                <button
+                  type="button"
+                  id="cancelDeviceButton"
+                  class="secondary-button"
+                >
+                  Cancelar
+                </button>
+
+              </div>
+
+            </form>
+
+          </div>
+
+
+          <!-- LISTA DE APARELHOS -->
+
+          <div class="panel">
+
+            <div class="panel-header">
+
+              <div>
+
+                <h3>
+                  Aparelhos cadastrados
+                </h3>
+
+                <p>
+                  Aparelhos vinculados à sua conta.
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <div
+              id="clientDevicesList"
+              class="client-devices-list"
+            >
+
+              <p class="empty-message">
+                Nenhum aparelho cadastrado.
+              </p>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- ORÇAMENTOS DO CLIENTE -->
+
+        <section
+          data-client-page-content="client-quotes"
+          class="client-page"
+          hidden
+        >
+
+          <div class="page-heading">
+
+            <div>
+
+              <span class="section-label">
+                ORÇAMENTOS
+              </span>
+
+              <h2>
+                Meus orçamentos
+              </h2>
+
+              <p>
+                Consulte os orçamentos preparados para você.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="panel">
+
+            <div
+              id="clientQuotesList"
+              class="client-quotes-list"
+            >
+
+              <p class="empty-message">
+                Nenhum orçamento disponível.
+              </p>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- PAGAMENTOS DO CLIENTE -->
+
+        <section
+          data-client-page-content="client-payments"
+          class="client-page"
+          hidden
+        >
+
+          <div class="page-heading">
+
+            <div>
+
+              <span class="section-label">
+                PAGAMENTOS
+              </span>
+
+              <h2>
+                Meus pagamentos
+              </h2>
+
+              <p>
+                Consulte os pagamentos e valores pendentes.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="panel">
+
+            <div
+              id="clientPaymentsList"
+              class="client-payments-list"
+            >
+
+              <p class="empty-message">
+                Nenhum pagamento pendente.
+              </p>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- PAGAMENTO PIX -->
+
+        <section
+          data-client-page-content="client-pix"
+          class="client-page"
+          hidden
+        >
+
+          <div class="page-heading">
+
+            <div>
+
+              <span class="section-label">
+                PAGAMENTO
+              </span>
+
+              <h2>
+                Pagamento via PIX
+              </h2>
+
+              <p>
+                Utilize os dados abaixo para realizar o pagamento.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="panel pix-panel">
+
+            <h3>
+              Dados para pagamento
+            </h3>
+
+
+            <div class="pix-data">
+
+              <div class="form-group">
+
+                <label for="pixType">
+                  Tipo de chave
+                </label>
+
+
+                <input
+                  type="text"
+                  id="pixType"
+                  value="CPF"
+                  readonly
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="pixKey">
+                  Chave PIX
+                </label>
+
+
+                <input
+                  type="text"
+                  id="pixKey"
+                  value="04416436041"
+                  readonly
+                >
+
+              </div>
+
+            </div>
+
+
+            <p class="pix-warning">
+
+              Após realizar o pagamento, envie o comprovante
+              pelo WhatsApp para confirmação.
+
+            </p>
+
+
+            <a
+              href="https://wa.me/5551989331736"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="primary-button"
+            >
+              Enviar comprovante pelo WhatsApp
+            </a>
+
+          </div>
+
+        </section>
+
+
+        <!-- LOJA -->
+
+        <section
+          data-client-page-content="client-store"
+          class="client-page"
+          hidden
+        >
+
+          <div class="client-store-header">
+
+            <div>
+
+              <span class="section-label">
+                GUSTAVO & EMILY
+              </span>
+
+              <h2>
+                Loja de acessórios
+              </h2>
+
+              <p>
+                Acessórios para celulares, computadores e tablets.
+              </p>
+
+            </div>
+
+
+            <button
+              type="button"
+              id="botaoCarrinho"
+              class="cart-button"
+              data-open-cart
+              aria-label="Abrir carrinho"
+            >
+
+              🛒
+
+              <span>
+                Carrinho
+              </span>
+
+
+              <strong
+                id="contadorCarrinho"
+                class="cart-count"
+                hidden
+              >
+                0
+              </strong>
+
+            </button>
+
+          </div>
+
+
+          <div class="store-notice">
+
+            <strong>
+              Pagamento via PIX
+            </strong>
+
+            <p>
+              Faça o pedido e envie o comprovante pelo WhatsApp
+              para confirmarmos a compra.
+            </p>
+
+          </div>
+
+
+          <!-- PRODUTOS -->
+
+          <div class="store-products-grid">
+
+
+            <article class="store-product-card">
+
+              <div class="product-icon">
+                📱
+              </div>
+
+              <h3>
+                Capinha para celular
+              </h3>
+
+              <p>
+                Capinha protetora para diversos modelos.
+              </p>
+
+              <strong class="product-price">
+                R$ 25,00
+              </strong>
+
+
+              <button
+                type="button"
+                class="primary-button add-to-cart"
+                data-product-id="capinha-celular"
+              >
+                Adicionar ao carrinho
+              </button>
+
+            </article>
+
+
+            <article class="store-product-card">
+
+              <div class="product-icon">
+                🛡️
+              </div>
+
+              <h3>
+                Película de vidro
+              </h3>
+
+              <p>
+                Proteção para a tela do seu aparelho.
+              </p>
+
+              <strong class="product-price">
+                R$ 15,00
+              </strong>
+
+
+              <button
+                type="button"
+                class="primary-button add-to-cart"
+                data-product-id="pelicula-vidro"
+              >
+                Adicionar ao carrinho
+              </button>
+
+            </article>
+
+
+            <article class="store-product-card">
+
+              <div class="product-icon">
+                🖱️
+              </div>
+
+              <h3>
+                Mouse USB
+              </h3>
+
+              <p>
+                Mouse com conexão USB para computador.
+              </p>
+
+              <strong class="product-price">
+                R$ 35,00
+              </strong>
+
+
+              <button
+                type="button"
+                class="primary-button add-to-cart"
+                data-product-id="mouse-usb"
+              >
+                Adicionar ao carrinho
+              </button>
+
+            </article>
+
+
+            <article class="store-product-card">
+
+              <div class="product-icon">
+                ⌨️
+              </div>
+
+              <h3>
+                Teclado USB
+              </h3>
+
+              <p>
+                Teclado USB para computadores e notebooks.
+              </p>
+
+              <strong class="product-price">
+                R$ 55,00
+              </strong>
+
+
+              <button
+                type="button"
+                class="primary-button add-to-cart"
+                data-product-id="teclado-usb"
+              >
+                Adicionar ao carrinho
+              </button>
+
+            </article>
+
+
+            <article class="store-product-card">
+
+              <div class="product-icon">
+                🔌
+              </div>
+
+              <h3>
+                Cabo USB
+              </h3>
+
+              <p>
+                Cabo para carregamento e transferência de dados.
+              </p>
+
+              <strong class="product-price">
+                R$ 20,00
+              </strong>
+
+
+              <button
+                type="button"
+                class="primary-button add-to-cart"
+                data-product-id="cabo-usb"
+              >
+                Adicionar ao carrinho
+              </button>
+
+            </article>
+
+
+            <article class="store-product-card">
+
+              <div class="product-icon">
+                🎧
+              </div>
+
+              <h3>
+                Fone de ouvido
+              </h3>
+
+              <p>
+                Fone para celulares, notebooks e computadores.
+              </p>
+
+              <strong class="product-price">
+                R$ 30,00
+              </strong>
+
+
+              <button
+                type="button"
+                class="primary-button add-to-cart"
+                data-product-id="fone-ouvido"
+              >
+                Adicionar ao carrinho
+              </button>
+
+            </article>
+
+          </div>
+
+
+          <!-- CARRINHO -->
+
+          <div
+            id="areaCarrinhoLoja"
+            class="panel store-cart-panel"
+            hidden
+          >
+
+            <div class="panel-header">
+
+              <div>
+
+                <h3>
+                  Meu carrinho
+                </h3>
+
+                <p>
+                  Confira os produtos selecionados.
+                </p>
+
+              </div>
+
+
+              <button
+                type="button"
+                class="secondary-button"
+                onclick="esvaziarCarrinho()"
+              >
+                Limpar carrinho
+              </button>
+
+            </div>
+
+
+            <div id="carrinhoLoja">
+
+              <p class="empty-message">
+                Seu carrinho está vazio.
+              </p>
+
+            </div>
+
+
+            <div class="cart-total">
+
+              <span>
+                Total do pedido:
+              </span>
+
+              <strong id="totalCarrinhoLoja">
+                R$ 0,00
+              </strong>
+
+            </div>
+
+          </div>
+
+
+          <!-- FORMULÁRIO DO PEDIDO -->
+
+          <div class="panel">
+
+            <div class="panel-header">
+
+              <div>
+
+                <h3>
+                  Finalizar pedido
+                </h3>
+
+                <p>
+                  Informe os dados para enviar seu pedido pelo WhatsApp.
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <form id="formPedidoLoja">
+
+
+              <div class="form-group">
+
+                <label for="pedidoNome">
+                  Nome completo
+                </label>
+
+
+                <input
+                  type="text"
+                  id="pedidoNome"
+                  placeholder="Digite seu nome completo"
+                  required
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="pedidoTelefone">
+                  Telefone
+                </label>
+
+
+                <input
+                  type="tel"
+                  id="pedidoTelefone"
+                  placeholder="(00) 00000-0000"
+                  required
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="pedidoEntrega">
+                  Forma de entrega
+                </label>
+
+
+                <select
+                  id="pedidoEntrega"
+                  required
+                >
+
+                  <option value="">
+                    Selecione a forma de entrega
+                  </option>
+
+                  <option value="Entrega local em Caxias do Sul">
+                    Entrega local em Caxias do Sul
+                  </option>
+
+                  <option value="Envio pelos Correios">
+                    Envio pelos Correios
+                  </option>
+
+                </select>
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="pedidoEndereco">
+                  Endereço de entrega
+                </label>
+
+
+                <textarea
+                  id="pedidoEndereco"
+                  rows="3"
+                  placeholder="Informe o endereço completo"
+                  required
+                ></textarea>
+
+              </div>
+
+
+              <div class="pix-order-box">
+
+                <h3>
+                  Pagamento via PIX
+                </h3>
+
+
+                <p>
+
+                  <strong>
+                    Chave PIX:
+                  </strong>
+
+                  04416436041
+
+                </p>
+
+
+                <p>
+
+                  <strong>
+                    Tipo de chave:
+                  </strong>
+
+                  CPF
+
+                </p>
+
+
+                <p>
+                  Após o pagamento, envie o comprovante pelo WhatsApp.
+                </p>
+
+              </div>
+
+
+              <button
+                type="submit"
+                class="primary-button"
+              >
+                Enviar pedido pelo WhatsApp
+              </button>
+
+
+              <div
+                id="mensagemPedidoLoja"
+                class="message-box"
+              ></div>
+
+            </form>
+
+          </div>
+
+        </section>
+
+
+        <!-- CONTATO -->
+
+        <section
+          data-client-page-content="client-contact"
+          class="client-page"
+          hidden
+        >
+
+          <div class="page-heading">
+
+            <div>
+
+              <span class="section-label">
+                ATENDIMENTO
+              </span>
+
+              <h2>
+                Fale conosco
+              </h2>
+
+              <p>
+                Entre em contato com a nossa equipe.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="panel contact-panel">
+
+            <h3>
+              Gustavo & Emily Assistência Técnica
+            </h3>
+
+
+            <p>
+              Estamos prontos para ajudar com seu aparelho.
+            </p>
+
+
+            <p>
+
+              <strong>
+                WhatsApp:
+              </strong>
+
+              (51) 98933-1736
+
+            </p>
+
+
+            <a
+              href="https://wa.me/5551989331736"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="primary-button"
+            >
+              Conversar pelo WhatsApp
+            </a>
+
+          </div>
+
+        </section>
+
+      </main>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       MODAIS E NOTIFICAÇÕES
+  ====================================================== -->
+
+  <div
+    class="modal-overlay"
+    id="modalOverlay"
+    hidden
+  >
+
+    <div
+      class="modal"
+      id="modalContent"
+    ></div>
+
+  </div>
+
+
+  <div
+    id="toast"
+    class="toast"
+  ></div>
+
+
+  <!-- =====================================================
+       SCRIPTS
+  ====================================================== -->
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script src="precos.js"></script>
+
+  <script src="app.js"></script>
+
+</body>
+
+</html>
