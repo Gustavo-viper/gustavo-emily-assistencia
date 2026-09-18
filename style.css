@@ -2,54 +2,7 @@
    GUSTAVO & EMILY - ASSISTÊNCIA TÉCNICA
    STYLE.CSS - VERSÃO ATUALIZADA
    TEMA: PRETO + AZUL
-/* =====================================================
-   ESTRUTURA DO ARQUIVO:
-   
-   1. VARIÁVEIS GLOBAIS (linhas 11-38)
-      - Cores do tema, espaçamentos, sombras
-   
-   2. RESET & BASE (linhas 43-112)
-      - Reset de margens, fontes, elementos base
-   
-   3. BOTÕES (linhas 115-206)
-      - Estilos de todos os tipos de botões
-   
-   4. FORMULÁRIOS (linhas 213-309)
-      - Inputs, labels, textarea, selects
-   
-   5. TELA DE LOGIN (linhas 312-441)
-      - Estilos da tela de autenticação
-   
-   6. ESTRUTURA PRINCIPAL (linhas 454-610)
-      - App area, sidebar, main content
-   
-   7. DASHBOARD & LISTAS (linhas 611-825)
-      - Cards, tabelas, painéis
-   
-   8. APARELHOS (linhas 826-927)
-      - Formulário de cadastro de aparelhos
-   
-   9. ORÇAMENTOS (linhas 950-1025)
-      - Resultado de orçamentos, pagamentos
-   
-   10. FINANCEIRO (linhas 1027-1158)
-       - Cards financeiros, PIX
-   
-   11. ÁREA DO CLIENTE (linhas 1160-1984)
-       - Estilos específicos da área do cliente
-   
-   12. ESTILO DA ÁREA DO CLIENTE (linhas 1985-2989)
-       - Tema alternativo com variáveis diferentes
-       - Client header, sidebar, menu, páginas
-   
-   13. RESPONSIVIDADE (linhas 1670-1911)
-       - Media queries para tablets e celulares
-   
-   14. CORREÇÕES FINAIS (linhas 1940-1984)
-       - Ajustes finais de borda e largura
-*/
-
-
+===================================================== */
 
 /* =====================================================
    VARIÁVEIS
